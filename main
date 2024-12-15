@@ -1,0 +1,54 @@
+# math_operations_program.py
+
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+
+def multiply(a, b):
+    return a * b
+
+def divide(a, b):
+    try:
+        return a / b
+    except ZeroDivisionError:
+        return "Error: Division by zero is not allowed."
+
+def main(predefined_inputs):
+    """
+    Main function accepts predefined inputs as a list of tuples.
+    Each tuple contains (num1, num2, operation).
+    """
+    print("Welcome to the Simple Math Operations Program!")
+    
+    for entry in predefined_inputs:
+        try:
+            num1, num2, operation = entry
+        except ValueError:
+            print("Invalid input structure. Each entry must be a tuple: (num1, num2, operation).")
+            continue
+
+        print(f"\nProcessing: num1={num1}, num2={num2}, operation={operation}")
+        
+        if operation == "1":
+            print(f"Result: {add(num1, num2)}")
+        elif operation == "2":
+            print(f"Result: {subtract(num1, num2)}")
+        elif operation == "3":
+            print(f"Result: {multiply(num1, num2)}")
+        elif operation == "4":
+            print(f"Result: {divide(num1, num2)}")
+        else:
+            print("Invalid operation selection. Please choose a valid option.")
+
+if __name__ == "__main__":
+    # Example predefined inputs for testing:
+    predefined_inputs = [
+        (10, 5, "1"),  # Addition
+        (10, 5, "2"),  # Subtraction
+        (10, 5, "3"),  # Multiplication
+        (10, 0, "4"),  # Division by zero
+        (10, 5, "4")   # Division
+    ]
+    main(predefined_inputs)
